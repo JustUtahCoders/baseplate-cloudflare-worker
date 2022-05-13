@@ -51,7 +51,7 @@ describe(`handleApps`, () => {
         microfrontendProxy: {
           environments: {
             __main__: {
-              useBaseplateHosting: false,
+              useBaseplateHosting: true,
               host: "https://cdn.walmart.com/",
             },
           },

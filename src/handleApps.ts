@@ -28,6 +28,31 @@ export async function handleApps(
     return internalErrorResponse(request, orgSettings);
   }
 
+  let s3ClientOptions;
+  if (proxySettings.useBaseplateHosting) {
+    s3ClientOptions = {
+      region: S3_PROXY_REGION,
+      credentials: {
+        accessKeyId: S3_PROXY_ACCESS_KEY_ID,
+        secretAccessKey: S3_PROXY_SECRET_ACCESS_KEY,
+      },
+    };
+  } else {
+    if (!proxySettings.aws) {
+      console.error(
+        `Org ${params.orgKey} doesn't have custom AWS credentials set in KV org settings, but is using custom s3 hosting`
+      );
+      return internalErrorResponse(request, orgSettings);
+    }
+    s3ClientOptions = {
+      region: proxySettings.aws.region,
+      credentials: {
+        accessKeyId: proxySettings.aws.accessKeyId,
+        secretAccessKey: proxySettings.aws.secretAccessKey,
+      },
+    };
+  }
+
   const proxyHost = proxySettings.host;
 
   if (!proxyHost) {
@@ -45,13 +70,7 @@ export async function handleApps(
     const Bucket = proxyHost.replace("s3://", "");
     const Key = params.pathParts.join("/");
 
-    const s3Client = new S3Client({
-      region: S3_PROXY_REGION,
-      credentials: {
-        accessKeyId: S3_PROXY_ACCESS_KEY_ID,
-        secretAccessKey: S3_PROXY_SECRET_ACCESS_KEY,
-      },
-    });
+    const s3Client = new S3Client(s3ClientOptions);
     let s3Response;
     try {
       s3Response = await s3Client.send(

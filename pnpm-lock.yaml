@@ -5,7 +5,7 @@ specifiers:
   '@babel/core': ^7.17.10
   '@babel/eslint-parser': ^7.17.0
   '@babel/preset-typescript': ^7.16.7
-  '@baseplate-sdk/utils': ^3.0.0
+  '@baseplate-sdk/utils': ^3.1.0
   '@changesets/changelog-github': ^0.4.4
   '@changesets/cli': ^2.22.0
   '@cloudflare/workers-types': ^3.10.0
@@ -32,7 +32,7 @@ specifiers:
 
 dependencies:
   '@aws-sdk/client-s3': 3.88.0
-  '@baseplate-sdk/utils': 3.0.0
+  '@baseplate-sdk/utils': 3.1.0
   path-to-regexp: 6.2.1
 
 devDependencies:
@@ -1360,8 +1360,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@baseplate-sdk/utils/3.0.0:
-    resolution: {integrity: sha512-vUMB7dfZw7ZimD4KEsvFjSlBoGfbyYdQ5k73RAXU8X3jgxRXolGGGBvgSRYkIpLgVF74Id4LCbGsa0kpft8MBQ==}
+  /@baseplate-sdk/utils/3.1.0:
+    resolution: {integrity: sha512-kS76XR+QtKnmU8pUl/IyG3hWJTJq+mQI+yzBSkbdjBOtOp16IxlzAasCd++/1a3QDmM6YjS+wR/Hq/wO1DH3TQ==}
     dependencies:
       lodash-es: 4.17.21
     dev: false

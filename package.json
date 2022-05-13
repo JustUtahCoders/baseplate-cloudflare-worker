@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.88.0",
-    "@baseplate-sdk/utils": "^3.0.0",
+    "@baseplate-sdk/utils": "^3.1.0",
     "path-to-regexp": "^6.2.1"
   }
 }
